@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="zenit_printer_agent" name="make_ask_bid_node" type="makeaskbid" output="screen"/>
+    <node pkg="zenit_printer_agent" name="print_node" type="printnode" output="screen"/>
+</launch>
