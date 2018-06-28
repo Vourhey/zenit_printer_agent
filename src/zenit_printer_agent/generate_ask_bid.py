@@ -6,7 +6,7 @@ from web3 import Web3, HTTPProvider
 class Generate_ask_bid:
     
     model     = 'QmWboFP8XeBtFMbNYK3Ne8Z3gKFBSR5iQzkKgeNgQz3dZP'
-    token     = '0x0Ef7fCB816fd725819e071eFB48F7EACb85c1A6A' 
+    token     = '0xdEA33F21294399c675C8F1D6C4a1F39b0719BCBf' 
     objective = 'QmaFhGQjwHkhkxwyGsLfGkyF2hjB3xQxN1AWNFrH71ADqB'
     cost      = 1
 
