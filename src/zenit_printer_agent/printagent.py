@@ -33,29 +33,19 @@ class PrintAgent:
         if r.status != 204:
             rospy.loginfo("Printer is in bad state")
 
+        url = 'http://[fced:97fd:da23:b15d:7897:4fa6:57b3:f2a3]/api/job'
+        headers = {
+            'X-API-KEY': apikey.apikey()
+        }
+
         while True:
-            url = 'http://[fced:97fd:da23:b15d:7897:4fa6:57b3:f2a3]/api/job'
-            headers = {
-                'X-API-KEY': apikey.apikey()
-            }
             r = pm.request('GET', url, headers=headers)
             d = json.loads(r.data.decode('utf-8'))['progress']['completion']
             if d == 1:
                 break
             rospy.loginfo('Complited {}%'.format(d * 100))
+            rospy.sleep(1)
         
-        
-        req = urllib2.Request('http://[fced:97fd:da23:b15d:7897:4fa6:57b3:f2a3]/api/files/local/' + data.data)
-        req.add_header('Content-Type', 'application/json')
-        req.add_header('X-API-KEY', apikey.apikey())
-
-        data = {
-            "command": "select",
-            "print": True
-        }
-
-        response = urllib2.urlopen(req, json.dumps(data))
-
         '''
         pm = urllib3.PoolManager()
         req = pm.request('GET', 'http://[fced:97fd:da23:b15d:7897:4fa6:57b3:f2a3]/api/files/local/ok?recursive=true', headers={'X-API-KEY': apikey.apikey()})
