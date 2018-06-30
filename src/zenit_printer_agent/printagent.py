@@ -10,12 +10,13 @@ class PrintAgent:
     def __init__(self):
         rospy.init_node('printagent_node')
 
+        self.output = open(rospy.get_param('~logfile'), 'w')
+
         rospy.Subscriber('/path_to_gcode', String, self.print_gcode)
 
     def print_gcode(self, data):
         rospy.loginfo('Got a task to print {}'.format(data.data))
 
-        '''
         url = 'http://[fced:97fd:da23:b15d:7897:4fa6:57b3:f2a3]/api/files/local/' + data.data
         headers = {
             'Content-Type': 'application/json',
@@ -41,9 +42,11 @@ class PrintAgent:
         while True:
             r = pm.request('GET', url, headers=headers)
             d = json.loads(r.data.decode('utf-8'))['progress']['completion']
-            if d == 1:
+            if d == 100.0:
                 break
-            rospy.loginfo('Complited {}%'.format(d * 100))
+            rospy.loginfo('Completed {}%'.format(d ))
+            self.output.write('Completed: {}%'.format(d))
+            self.output.flush()
             rospy.sleep(1)
         
         '''
@@ -52,6 +55,7 @@ class PrintAgent:
         
         rospy.loginfo(req.data)
 
+        '''
         rospy.wait_for_service("liability/finish")
         fin = rospy.ServiceProxy("liability/finish", Empty)
         rospy.loginfo("finishing...")
