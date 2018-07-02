@@ -36,7 +36,7 @@ while True:
             data = connection.recv(1)
             print('received {!r}'.format(data))
             if data:
-                data = data.from_bytes(1, 'big')
+                data = int.from_bytes(data, 'big')
                 cmd.append(objectives[data])
                 proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
                 logfile = open("/home/zenit/zenit_output.log","r")

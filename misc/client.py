@@ -12,7 +12,7 @@ sock.connect(server_address)
 choice = -1
 while True:
     print('Choose a model:\n1. Cube\n2. Stans')
-    choice = input(">")
+    choice = int(input(">"))
     if 0 < choice < 3:
         break
 
