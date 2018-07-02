@@ -1,6 +1,6 @@
 import rospy
 from robonomics_lighthouse.msg import Ask, Bid
-from std_srvs.srv import Empty, EmptyResponse
+from zenit_printer_agent.srv import *
 from web3 import Web3, HTTPProvider
 
 class Generate_ask_bid:
@@ -25,9 +25,9 @@ class Generate_ask_bid:
 
             msg             = Bid()
             msg.model       = self.model
-            msg.objective   = self.objective
+            msg.objective   = m.objective
             msg.token       = self.token
-            msg.cost        = self.cost
+            msg.cost        = m.cost
             msg.lighthouseFee = 0
             msg.deadline    = deadline
             self.signing_bid.publish(msg)
@@ -41,7 +41,7 @@ class Generate_ask_bid:
 
             msg             = Ask()
             msg.model       = self.model
-            msg.objective   = self.objective
+            msg.objective   = req.objective
             msg.token       = self.token
             msg.cost        = self.cost
             msg.validator   = '0x0000000000000000000000000000000000000000'
@@ -50,7 +50,7 @@ class Generate_ask_bid:
 
             self.signing_ask.publish(msg)
             return EmptyResponse()
-        rospy.Service('make_ask', Empty, make_ask)
+        rospy.Service('make_ask', Objective, make_ask)
 
     def spin(self):
         rospy.spin()
