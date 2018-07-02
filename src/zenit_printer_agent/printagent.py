@@ -16,7 +16,7 @@ class PrintAgent:
 
     def print_gcode(self, data):
         rospy.loginfo('Got a task to print {}'.format(data.data))
-
+        '''
         url = 'http://[fced:97fd:da23:b15d:7897:4fa6:57b3:f2a3]/api/files/local/' + data.data
         headers = {
             'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ class PrintAgent:
         
         rospy.loginfo(req.data)
 
-        '''
+        
         rospy.wait_for_service("liability/finish")
         fin = rospy.ServiceProxy("liability/finish", Empty)
         rospy.loginfo("finishing...")
