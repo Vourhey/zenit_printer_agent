@@ -49,7 +49,7 @@ class Generate_ask_bid:
             msg.deadline    = deadline
 
             self.signing_ask.publish(msg)
-            return EmptyResponse()
+            return ObjectiveResponse('ok')
         rospy.Service('make_ask', Objective, make_ask)
 
     def spin(self):

@@ -57,7 +57,6 @@ catkin_python_setup()
 add_service_files(
   FILES
   Objective.srv
-#   Service2.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -72,6 +71,7 @@ add_service_files(
 #   DEPENDENCIES
 #   std_msgs
 # )
+generate_messages()
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
