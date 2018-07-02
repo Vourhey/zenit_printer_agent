@@ -24,6 +24,7 @@ sock.bind(server_address)
 # Listen for incoming connections
 sock.listen(1)
 cmd = ["rosservice", "call", "/make_ask"]
+objectives = ['QmaFhGQjwHkhkxwyGsLfGkyF2hjB3xQxN1AWNFrH71ADqB', 'QmWuCcQvNpKwMecASgsGZCDT8ht5V2XEBWhSZ2adpgLLPQ']
 
 while True:
     # Wait for a connection
@@ -32,9 +33,11 @@ while True:
     try:
         print('connection from', client_address)
         while True:
-            data = connection.recv(4)
+            data = connection.recv(1)
             print('received {!r}'.format(data))
             if data:
+                data = data.from_bytes(1, 'big')
+                cmd.append(objectives[data])
                 proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
                 logfile = open("/home/zenit/zenit_output.log","r")
                 loglines = follow(logfile)

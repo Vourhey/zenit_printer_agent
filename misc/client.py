@@ -9,10 +9,19 @@ server_address = ('fca5:7846:cb2e:639c:ec9d:70c6:b597:2b84', 10000)
 print('connecting to {} port {}'.format(*server_address))
 sock.connect(server_address)
 
+choice = -1
+while True:
+    print('Choose a model:\n1. Cube\n2. Stans')
+    choice = input(">")
+    if 0 < choice < 3:
+        break
+
+choice -= 1
+
 try:
 
     # Send data
-    message = b'This'
+    message = choice.to_bytes(1, 'big')
     print('sending {!r}'.format(message))
     sock.sendall(message)
 
