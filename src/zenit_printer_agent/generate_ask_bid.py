@@ -7,7 +7,7 @@ class Generate_ask_bid:
     
     model     = 'QmWboFP8XeBtFMbNYK3Ne8Z3gKFBSR5iQzkKgeNgQz3dZP'
     token     = '0xdEA33F21294399c675C8F1D6C4a1F39b0719BCBf' 
-    objective = 'QmaFhGQjwHkhkxwyGsLfGkyF2hjB3xQxN1AWNFrH71ADqB'
+    #objective = 'QmaFhGQjwHkhkxwyGsLfGkyF2hjB3xQxN1AWNFrH71ADqB'
     cost      = 1
 
     def __init__(self):
@@ -35,6 +35,7 @@ class Generate_ask_bid:
 
         def make_ask(req):
             rospy.loginfo("Creating an ask")
+            rospy.loginfo()
 
             block = self.web3.eth.getBlock('latest')
             deadline = block.number + 10000 # should be enough for a day
