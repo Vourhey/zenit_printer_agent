@@ -18,6 +18,8 @@ while True:
 
 choice -= 1
 
+print('Please visit http://[fced:97fd:da23:b15d:7897:4fa6:57b3:f2a3]/webcam/?action=stream for live stream')
+
 try:
 
     # Send data
