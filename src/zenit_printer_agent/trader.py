@@ -3,19 +3,22 @@ from robonomics_lighthouse.msg import Ask, Bid
 from zenit_printer_agent.srv import *
 from web3 import Web3, HTTPProvider
 
-class Generate_ask_bid:
-    
+class Trader:
+
     model     = 'QmWboFP8XeBtFMbNYK3Ne8Z3gKFBSR5iQzkKgeNgQz3dZP'
-    token     = '0xdEA33F21294399c675C8F1D6C4a1F39b0719BCBf' 
+    token     = '0xdEA33F21294399c675C8F1D6C4a1F39b0719BCBf'
     #objective = 'QmaFhGQjwHkhkxwyGsLfGkyF2hjB3xQxN1AWNFrH71ADqB'
     cost      = 1
 
     def __init__(self):
-        rospy.init_node('generate_ask_bid_node')
+        rospy.init_node('trader_node')
+        rospy.loginfo("Launching trader node...")
 
         self.web3 = Web3(HTTPProvider("http://127.0.0.1:8545"))
         self.signing_bid = rospy.Publisher('lighthouse/infochan/signing/bid', Bid, queue_size=128)
         self.signing_ask = rospy.Publisher('lighthouse/infochan/signing/ask', Ask, queue_size=128)
+
+        rospy.loginfo("Trader node is launched!")
 
         def make_bid(m):
             rospy.loginfo("Got an ask, let's make a bid")

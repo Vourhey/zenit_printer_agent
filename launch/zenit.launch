@@ -1,6 +1,6 @@
 <launch>
-    <node pkg="zenit_printer_agent" name="make_ask_bid_node" type="makeaskbid" output="screen"/>
-    <node pkg="zenit_printer_agent" name="print_node" type="printnode" output="screen">
-        <param name="logfile" value="/home/zenit/zenit_output.log" />
+    <node pkg="zenit_printer_agent" name="trader" type="trader_node" output="screen">
+    </node>
+    <node pkg="zenit_printer_agent" name="printer" type="print_node" output="screen">
     </node>
 </launch>
