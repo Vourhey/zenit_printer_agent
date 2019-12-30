@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from zenit_printer_agent.nodes import generate_ask_bid_node
+from zenit_printer_agent.nodes import trader_node
 
 if __name__ == "__main__":
-	 generate_ask_bid_node()
+    trader_node()

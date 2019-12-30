@@ -11,7 +11,7 @@ from ipfs_common.msg import Multihash, Filepath
 from ipfs_common.ipfs_rosbag import IpfsRosBag
 from ipfs_common.srv import IpfsDownloadFile
 
-from octopi import OctoPi
+from .octopi import OctoPi
 
 
 class Trader:

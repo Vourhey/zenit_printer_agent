@@ -1,8 +1,8 @@
 from . import trader
-from . import printagent
+from . import printeragent
 
 def trader_node():
     trader.Trader().spin()
 
 def print_node():
-    printagent.PrintAgent().spin()
+    printeragent.PrinterAgent().spin()
