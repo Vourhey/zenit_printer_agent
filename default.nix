@@ -1,6 +1,7 @@
 { stdenv
 , mkRosPackage
 , robonomics_comm
+, python3Packages
 }:
 
 mkRosPackage rec {
@@ -12,11 +13,12 @@ mkRosPackage rec {
 
   propagatedBuildInputs = [
     robonomics_comm
+    python3Packages.requests
   ];
 
   meta = with stdenv.lib; {
     description = "";
-    homepage = http://github.com/vourhey/;
+    homepage = http://github.com/vourhey/zenit_printer_agent;
     license = licenses.bsd3;
     maintainers = with maintainers; [ vourhey ];
   };

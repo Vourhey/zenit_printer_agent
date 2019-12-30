@@ -1,5 +1,13 @@
 <launch>
+    <arg name="octopi_url" default="" />
+    <arg name="octopi_key" default="" />
     <node pkg="zenit_printer_agent" name="trader" type="trader_node" output="screen">
+        <param name="model" value="" />
+        <param name="token" value="" />
+        <param name="order_lifetime" value="100" />
+
+        <param name="octopi_url" value="$(arg octopi_url)" />
+        <param name="octopi_key" value="$(arg octopi_key)" />
     </node>
     <node pkg="zenit_printer_agent" name="printer" type="print_node" output="screen">
     </node>

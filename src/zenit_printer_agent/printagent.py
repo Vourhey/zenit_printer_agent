@@ -48,14 +48,14 @@ class PrintAgent:
             self.output.write('Completed: {}%'.format(d))
             self.output.flush()
             rospy.sleep(1)
-        
+
         '''
         pm = urllib3.PoolManager()
         req = pm.request('GET', 'http://[fced:97fd:da23:b15d:7897:4fa6:57b3:f2a3]/api/files/local/ok?recursive=true', headers={'X-API-KEY': apikey.apikey()})
-        
+
         rospy.loginfo(req.data)
         '''
-        
+
         rospy.wait_for_service("liability/finish")
         fin = rospy.ServiceProxy("liability/finish", Empty)
         rospy.loginfo("finishing...")
